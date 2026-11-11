@@ -9,7 +9,7 @@ Both are hand engraved in capitals by Tiffany & Co. engravers in New York City.
 
 ![Preview](preview.png)
 
-[Download the PDF](Wedding-Band-Inscriptions.pdf)
+**View it:** [estim8d.github.io/for-alltid-go-deo](https://estim8d.github.io/for-alltid-go-deo/) · [Download the PDF](Wedding-Band-Inscriptions.pdf)
 
 ## Build it
 
@@ -28,4 +28,4 @@ python3 make_pdf.py       # writes Wedding-Band-Inscriptions.pdf
 - Text: Cormorant Garamond. Inscriptions: Cinzel, standing in for an engraver's Roman capital.
 - Ink #00563B on Tiffany Blue #81D8D0.
 
-Both fonts are under the SIL Open Font License. The Tiffany & Co. wordmark is a trademark of Tiffany & Co.
+Both fonts are under the SIL Open Font License; the web page serves them from `webfonts/`, with their licenses. The Tiffany & Co. wordmark is a trademark of Tiffany & Co.
