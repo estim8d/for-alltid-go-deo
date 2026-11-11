@@ -34,6 +34,8 @@ python3 encrypt_page.py    # asks for the page password
 
 The published page holds only AES-256-GCM ciphertext; the browser decrypts it once the right password is entered. `_config.yml` keeps this README, the scripts, `src/`, the plain PDF and `preview.png` off the site. Rebuild after changing the PDF too.
 
+The page is also published at [davidehlers.com/forever](https://davidehlers.com/forever/). After rebuilding, copy `index.html`, `keepsake.bin`, `logo_green.png` and `webfonts/` into `forever/` in the `estim8d/davidehlers.com` repo.
+
 ## Type and color
 
 - Text: Cormorant Garamond. Inscriptions: Cinzel, standing in for an engraver's Roman capital.
