@@ -132,9 +132,42 @@
     padding-bottom: 3px;
   }
   .pdf:hover { color: var(--ink); border-color: var(--ink); }
+
+  /* Simple password gate (not real security: the page source is public) */
+  body.locked main { display: none; }
+  .gate { display: none; min-height: 100vh; align-items: center; justify-content: center; }
+  body.locked .gate { display: flex; }
+  .gate form { text-align: center; }
+  .gate label {
+    display: block;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    margin-bottom: 14px;
+  }
+  .gate input {
+    font: italic 24px "CG", Georgia, serif;
+    color: var(--ink);
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--rule);
+    text-align: center;
+    width: 220px;
+    padding: 4px 0;
+    outline: none;
+  }
+  .gate input:focus { border-color: var(--ink); }
+  .gate.wrong input { border-color: var(--ink); animation: nope 0.3s; }
+  @keyframes nope { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
 </style>
 </head>
-<body>
+<body class="locked">
+<div class="gate">
+  <form>
+    <label for="pw">PASSWORD</label>
+    <input id="pw" type="password" autocomplete="off" autofocus>
+  </form>
+</div>
 <main>
   <h1 class="names" aria-label="Shauneen and David">
     <span class="her">SHAUNEEN</span><span class="amp">&amp;</span><span class="him">DAVID</span>
@@ -193,5 +226,24 @@
     <a class="pdf" href="Wedding-Band-Inscriptions.pdf">DOWNLOAD PDF</a>
   </footer>
 </main>
+<script>
+  (function () {
+    var KEY = "for-alltid-go-deo";
+    var unlock = function () { document.body.classList.remove("locked"); };
+    try { if (localStorage.getItem(KEY) === "1") unlock(); } catch (e) {}
+    var gate = document.querySelector(".gate");
+    gate.querySelector("form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var input = document.getElementById("pw");
+      if (input.value.trim().toLowerCase() === "love") {
+        try { localStorage.setItem(KEY, "1"); } catch (err) {}
+        unlock();
+      } else {
+        gate.classList.remove("wrong"); void gate.offsetWidth; gate.classList.add("wrong");
+        input.select();
+      }
+    });
+  })();
+</script>
 </body>
 </html>
