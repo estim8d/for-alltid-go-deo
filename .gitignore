@@ -1,0 +1,5 @@
+fonts/
+build/
+Band-Options.pdf
+__pycache__/
+.DS_Store
