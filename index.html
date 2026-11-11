@@ -7,7 +7,6 @@
 <meta name="description" content="The inscriptions inside Shauneen and David's wedding bands.">
 <meta property="og:title" content="Shauneen &amp; David: FOR ALLTID · GO DEO">
 <meta property="og:description" content="One love, two languages. Both mean forever.">
-<meta property="og:image" content="preview.png">
 <meta name="theme-color" content="#81D8D0">
 <style>
   @font-face { font-family: "CG"; src: url(webfonts/cormorant-garamond-latin-400-normal.woff2) format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
@@ -133,7 +132,7 @@
   }
   .pdf:hover { color: var(--ink); border-color: var(--ink); }
 
-  /* Simple password gate (not real security: the page source is public) */
+  /* Password gate: the published page holds only ciphertext (see encrypt_page.py) */
   body.locked main { display: none; }
   .gate { display: none; min-height: 100vh; align-items: center; justify-content: center; }
   body.locked .gate { display: flex; }
@@ -168,82 +167,77 @@
     <input id="pw" type="password" autocomplete="off" autofocus>
   </form>
 </div>
-<main>
-  <h1 class="names" aria-label="Shauneen and David">
-    <span class="her">SHAUNEEN</span><span class="amp">&amp;</span><span class="him">DAVID</span>
-  </h1>
-
-  <p class="intro"><span class="nb">One love, two languages.</span><br><span class="nb">Hers from Ireland.</span> <span class="nb">His from Norway.</span><br><span class="nb">Both mean forever.</span></p>
-
-  <hr>
-
-  <section class="ring">
-    <h2 class="inscription">FOR ALLTID</h2>
-    <p class="who">SHAUNEEN</p>
-    <p class="lang">
-      <svg viewBox="0 0 22 16" aria-hidden="true">
-        <g fill="#00563b">
-          <rect x="0" y="0" width="6" height="6"/><rect x="10" y="0" width="12" height="6"/>
-          <rect x="0" y="10" width="6" height="6"/><rect x="10" y="10" width="12" height="6"/>
-        </g>
-        <g fill="#00563b" fill-opacity="0.18">
-          <rect x="6" y="0" width="1" height="6"/><rect x="9" y="0" width="1" height="6"/>
-          <rect x="6" y="10" width="1" height="6"/><rect x="9" y="10" width="1" height="6"/>
-          <rect x="0" y="6" width="6" height="1"/><rect x="0" y="9" width="6" height="1"/>
-          <rect x="10" y="6" width="12" height="1"/><rect x="10" y="9" width="12" height="1"/>
-          <rect x="6" y="6" width="1" height="1"/><rect x="9" y="6" width="1" height="1"/>
-          <rect x="6" y="9" width="1" height="1"/><rect x="9" y="9" width="1" height="1"/>
-        </g>
-        <g fill="#00563b" fill-opacity="0.55">
-          <rect x="7" y="0" width="2" height="16"/><rect x="0" y="7" width="7" height="2"/><rect x="9" y="7" width="13" height="2"/>
-        </g>
-      </svg>
-      Norwegian&nbsp;&nbsp;·&nbsp;&nbsp;Norsk
-    </p>
-    <p class="desc"><b>FOR ALLTID</b> is Norwegian for forever. On ordinary days and hard ones, Shauneen will have a little of David with her, <span class="nb">right against her skin.</span></p>
-  </section>
-
-  <hr>
-
-  <section class="ring">
-    <h2 class="inscription">GO DEO</h2>
-    <p class="who">DAVID</p>
-    <p class="lang">
-      <svg viewBox="0 0 30 15" aria-hidden="true">
-        <rect x="0" y="0" width="10.05" height="15" fill="#00563b"/>
-        <rect x="10" y="0" width="10.05" height="15" fill="#00563b" fill-opacity="0.18"/>
-        <rect x="20" y="0" width="10" height="15" fill="#00563b" fill-opacity="0.55"/>
-      </svg>
-      Irish&nbsp;&nbsp;·&nbsp;&nbsp;Gaeilge
-    </p>
-    <p class="desc"><b>GO DEO</b> is Irish for forever. Long days and quiet nights, David carries a little of Shauneen with him, <span class="nb">close against his skin.</span></p>
-  </section>
-
-  <footer>
-    <img src="logo_green.png" alt="Tiffany &amp; Co.">
-    <p class="craft-label">ENGRAVED BY HAND</p>
-    <p class="craft">Each letter cut by hand by Tiffany &amp; Co. engravers in New York City,<br>a craft passed from one generation to the next.</p>
-    <a class="pdf" href="Wedding-Band-Inscriptions.pdf">DOWNLOAD PDF</a>
-  </footer>
-</main>
+<main></main>
 <script>
-  (function () {
-    var KEY = "for-alltid-go-deo";
-    var unlock = function () { document.body.classList.remove("locked"); };
-    try { if (localStorage.getItem(KEY) === "1") unlock(); } catch (e) {}
-    var gate = document.querySelector(".gate");
-    gate.querySelector("form").addEventListener("submit", function (e) {
-      e.preventDefault();
-      var input = document.getElementById("pw");
-      if (input.value.trim().toLowerCase() === "love") {
-        try { localStorage.setItem(KEY, "1"); } catch (err) {}
-        unlock();
-      } else {
-        gate.classList.remove("wrong"); void gate.offsetWidth; gate.classList.add("wrong");
-        input.select();
-      }
+(function () {
+  var P = {"iter": 600000, "salt": "KtBjSFUsfRRJxB+VH110Lw==", "iv": "OuXVbT+odO9bzolW", "ct": "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", "pdf": {"file": "keepsake.bin", "iv": "ajwKbfGAEuwOt8RD", "name": "Wedding-Band-Inscriptions.pdf"}};
+  var STORE = "for-alltid-go-deo-key";
+  var enc = new TextEncoder(), dec = new TextDecoder();
+  var b64 = function (s) { return Uint8Array.from(atob(s), function (c) { return c.charCodeAt(0); }); };
+  var toB64 = function (buf) { return btoa(String.fromCharCode.apply(null, new Uint8Array(buf))); };
+  var gate = document.querySelector(".gate");
+  var input = document.getElementById("pw");
+  var busy = false;
+
+  try { localStorage.removeItem("for-alltid-go-deo"); } catch (e) {}
+
+  function derive(pw) {
+    return crypto.subtle.importKey("raw", enc.encode(pw), "PBKDF2", false, ["deriveKey"]).then(function (base) {
+      return crypto.subtle.deriveKey(
+        { name: "PBKDF2", salt: b64(P.salt), iterations: P.iter, hash: "SHA-256" },
+        base, { name: "AES-GCM", length: 256 }, true, ["decrypt"]);
     });
-  })();
+  }
+
+  function open(key) {
+    return crypto.subtle.decrypt({ name: "AES-GCM", iv: b64(P.iv) }, key, b64(P.ct)).then(function (buf) {
+      document.querySelector("main").innerHTML = dec.decode(buf);
+      document.body.classList.remove("locked");
+      var link = document.querySelector("a.pdf");
+      if (link) link.addEventListener("click", function (e) { e.preventDefault(); download(key); });
+      return key;
+    });
+  }
+
+  function download(key) {
+    fetch(P.pdf.file).then(function (r) { return r.arrayBuffer(); }).then(function (data) {
+      return crypto.subtle.decrypt({ name: "AES-GCM", iv: b64(P.pdf.iv) }, key, data);
+    }).then(function (buf) {
+      var url = URL.createObjectURL(new Blob([buf], { type: "application/pdf" }));
+      var a = document.createElement("a");
+      a.href = url; a.download = P.pdf.name;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 10000);
+    });
+  }
+
+  function remember(key) {
+    return crypto.subtle.exportKey("raw", key).then(function (raw) {
+      try { localStorage.setItem(STORE, toB64(raw)); } catch (e) {}
+    });
+  }
+
+  function wrong() {
+    gate.classList.remove("wrong"); void gate.offsetWidth; gate.classList.add("wrong");
+    input.select();
+  }
+
+  var saved = null;
+  try { saved = localStorage.getItem(STORE); } catch (e) {}
+  if (saved) {
+    crypto.subtle.importKey("raw", b64(saved), "AES-GCM", true, ["decrypt"]).then(open).catch(function () {
+      try { localStorage.removeItem(STORE); } catch (e) {}
+    });
+  }
+
+  gate.querySelector("form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (busy) return;
+    busy = true;
+    derive(input.value.trim().toLowerCase()).then(open).then(remember).catch(wrong)
+      .then(function () { busy = false; });
+  });
+})();
 </script>
 </body>
 </html>

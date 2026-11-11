@@ -1,0 +1,14 @@
+# GitHub Pages publishes only the encrypted page and its assets.
+# Everything below stays in the repo but is not served on the site.
+exclude:
+  - README.md
+  - src
+  - encrypt_page.py
+  - make_pdf.py
+  - setup_fonts.py
+  - requirements.txt
+  - Wedding-Band-Inscriptions.pdf
+  - Band-Options.pdf
+  - preview.png
+  - fonts
+  - build

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shauneen &amp; David: FOR ALLTID · GO DEO</title>
+<meta name="description" content="The inscriptions inside Shauneen and David's wedding bands.">
+<meta property="og:title" content="Shauneen &amp; David: FOR ALLTID · GO DEO">
+<meta property="og:description" content="One love, two languages. Both mean forever.">
+<meta name="theme-color" content="#81D8D0">
+<style>
+  @font-face { font-family: "CG"; src: url(webfonts/cormorant-garamond-latin-400-normal.woff2) format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: "CG"; src: url(webfonts/cormorant-garamond-latin-400-italic.woff2) format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+  @font-face { font-family: "CG"; src: url(webfonts/cormorant-garamond-latin-500-normal.woff2) format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+  @font-face { font-family: "CG"; src: url(webfonts/cormorant-garamond-latin-700-normal.woff2) format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+  @font-face { font-family: "CG"; src: url(webfonts/cormorant-garamond-latin-700-italic.woff2) format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }
+  @font-face { font-family: "Engr"; src: url(webfonts/cinzel-latin-400-normal.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+
+  :root {
+    --ink: #00563b;
+    --muted: #0a6e4a;
+    --body: #00603f;
+    --rule: #409785;
+    --blue: #81D8D0;
+    --gap: 15px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--blue);
+    color: var(--ink);
+    font-family: "CG", Georgia, serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 72px 24px 64px;
+    text-align: center;
+  }
+
+  /* Header: SHAUNEEN up-left, DAVID down-right, around a centered & */
+  .names {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    column-gap: 18px;
+    font-weight: 500;
+    font-size: clamp(22px, 5.4vw, 40px);
+    letter-spacing: 0.28em;
+    line-height: 1;
+    margin: 0;
+  }
+  .names .her { justify-self: end; align-self: start; margin-top: 0.5em; margin-right: -0.28em; }
+  .names .amp { font-size: 2.9em; letter-spacing: 0; line-height: 0.8; }
+  .names .him { justify-self: start; align-self: end; margin-bottom: 0.5em; }
+
+  .intro {
+    font-style: italic;
+    font-size: clamp(26px, 5.6vw, 40px);
+    line-height: 1.04;
+    margin: 56px auto 0;
+  }
+
+  hr {
+    width: 96px;
+    border: 0;
+    border-top: 1px solid var(--rule);
+    margin: 56px auto;
+  }
+
+  .ring > * { margin: 0; }
+  .ring > * + * { margin-top: var(--gap); }
+  .inscription {
+    font-family: "Engr", serif;
+    font-weight: 400;
+    font-size: clamp(44px, 10vw, 67px);
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+  .who {
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.31em;
+    margin-right: -0.31em;
+    color: var(--muted);
+  }
+  .lang {
+    font-size: 17px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .lang svg { height: 11px; width: auto; display: block; }
+  .desc {
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.37;
+    color: var(--body);
+    max-width: 535px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .desc b { font-style: normal; font-weight: 700; }
+  .nb { white-space: nowrap; }
+
+  footer { margin-top: 64px; }
+  footer img { width: 118px; height: auto; display: block; margin: 0 auto; }
+  .craft-label {
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    margin: 18px 0 0;
+  }
+  .craft {
+    font-size: 12.5px;
+    line-height: 1.5;
+    opacity: 0.76;
+    color: var(--body);
+    margin: 10px 0 0;
+  }
+  .pdf {
+    display: inline-block;
+    margin-top: 36px;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 3px;
+  }
+  .pdf:hover { color: var(--ink); border-color: var(--ink); }
+
+  /* Password gate: the published page holds only ciphertext (see encrypt_page.py) */
+  body.locked main { display: none; }
+  .gate { display: none; min-height: 100vh; align-items: center; justify-content: center; }
+  body.locked .gate { display: flex; }
+  .gate form { text-align: center; }
+  .gate label {
+    display: block;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    margin-bottom: 14px;
+  }
+  .gate input {
+    font: italic 24px "CG", Georgia, serif;
+    color: var(--ink);
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--rule);
+    text-align: center;
+    width: 220px;
+    padding: 4px 0;
+    outline: none;
+  }
+  .gate input:focus { border-color: var(--ink); }
+  .gate.wrong input { border-color: var(--ink); animation: nope 0.3s; }
+  @keyframes nope { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+</style>
+</head>
+<body class="locked">
+<div class="gate">
+  <form>
+    <label for="pw">PASSWORD</label>
+    <input id="pw" type="password" autocomplete="off" autofocus>
+  </form>
+</div>
+<main>
+  <h1 class="names" aria-label="Shauneen and David">
+    <span class="her">SHAUNEEN</span><span class="amp">&amp;</span><span class="him">DAVID</span>
+  </h1>
+
+  <p class="intro"><span class="nb">One love, two languages.</span><br><span class="nb">Hers from Ireland.</span> <span class="nb">His from Norway.</span><br><span class="nb">Both mean forever.</span></p>
+
+  <hr>
+
+  <section class="ring">
+    <h2 class="inscription">FOR ALLTID</h2>
+    <p class="who">SHAUNEEN</p>
+    <p class="lang">
+      <svg viewBox="0 0 22 16" aria-hidden="true">
+        <g fill="#00563b">
+          <rect x="0" y="0" width="6" height="6"/><rect x="10" y="0" width="12" height="6"/>
+          <rect x="0" y="10" width="6" height="6"/><rect x="10" y="10" width="12" height="6"/>
+        </g>
+        <g fill="#00563b" fill-opacity="0.18">
+          <rect x="6" y="0" width="1" height="6"/><rect x="9" y="0" width="1" height="6"/>
+          <rect x="6" y="10" width="1" height="6"/><rect x="9" y="10" width="1" height="6"/>
+          <rect x="0" y="6" width="6" height="1"/><rect x="0" y="9" width="6" height="1"/>
+          <rect x="10" y="6" width="12" height="1"/><rect x="10" y="9" width="12" height="1"/>
+          <rect x="6" y="6" width="1" height="1"/><rect x="9" y="6" width="1" height="1"/>
+          <rect x="6" y="9" width="1" height="1"/><rect x="9" y="9" width="1" height="1"/>
+        </g>
+        <g fill="#00563b" fill-opacity="0.55">
+          <rect x="7" y="0" width="2" height="16"/><rect x="0" y="7" width="7" height="2"/><rect x="9" y="7" width="13" height="2"/>
+        </g>
+      </svg>
+      Norwegian&nbsp;&nbsp;·&nbsp;&nbsp;Norsk
+    </p>
+    <p class="desc"><b>FOR ALLTID</b> is Norwegian for forever. On ordinary days and hard ones, Shauneen will have a little of David with her, <span class="nb">right against her skin.</span></p>
+  </section>
+
+  <hr>
+
+  <section class="ring">
+    <h2 class="inscription">GO DEO</h2>
+    <p class="who">DAVID</p>
+    <p class="lang">
+      <svg viewBox="0 0 30 15" aria-hidden="true">
+        <rect x="0" y="0" width="10.05" height="15" fill="#00563b"/>
+        <rect x="10" y="0" width="10.05" height="15" fill="#00563b" fill-opacity="0.18"/>
+        <rect x="20" y="0" width="10" height="15" fill="#00563b" fill-opacity="0.55"/>
+      </svg>
+      Irish&nbsp;&nbsp;·&nbsp;&nbsp;Gaeilge
+    </p>
+    <p class="desc"><b>GO DEO</b> is Irish for forever. Long days and quiet nights, David carries a little of Shauneen with him, <span class="nb">close against his skin.</span></p>
+  </section>
+
+  <footer>
+    <img src="logo_green.png" alt="Tiffany &amp; Co.">
+    <p class="craft-label">ENGRAVED BY HAND</p>
+    <p class="craft">Each letter cut by hand by Tiffany &amp; Co. engravers in New York City,<br>a craft passed from one generation to the next.</p>
+    <a class="pdf" href="Wedding-Band-Inscriptions.pdf">DOWNLOAD PDF</a>
+  </footer>
+</main>
+</body>
+</html>

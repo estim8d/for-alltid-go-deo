@@ -23,6 +23,17 @@ python3 setup_fonts.py    # downloads Cormorant Garamond and Cinzel into ./fonts
 python3 make_pdf.py       # writes Wedding-Band-Inscriptions.pdf
 ```
 
+## Publish the web page
+
+The page is password protected. Edit `src/index.html` (plain text), then build the published `index.html` and `keepsake.bin` (the encrypted PDF):
+
+```sh
+pip install cryptography
+python3 encrypt_page.py    # asks for the page password
+```
+
+The published page holds only AES-256-GCM ciphertext; the browser decrypts it once the right password is entered. `_config.yml` keeps this README, the scripts, `src/`, the plain PDF and `preview.png` off the site. Rebuild after changing the PDF too.
+
 ## Type and color
 
 - Text: Cormorant Garamond. Inscriptions: Cinzel, standing in for an engraver's Roman capital.
